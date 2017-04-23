@@ -1,0 +1,257 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/jamesarosen/ember-i18n#readme">ember-i18n (v5.0.1)</a>
+</h1>
+<h4>Internationalization for Ember</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ember-i18n">module ember-i18n</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">ember-i18n.</span>isLocalizationFramework</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ember-i18n.init">
+            function <span class="apidocSignatureSpan">ember-i18n.</span>init
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ember-i18n.treeFor">
+            function <span class="apidocSignatureSpan">ember-i18n.</span>treeFor
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">ember-i18n.</span>index</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">ember-i18n.</span>name</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ember-i18n.index">module ember-i18n.index</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">ember-i18n.index.</span>isLocalizationFramework</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ember-i18n.index.init">
+            function <span class="apidocSignatureSpan">ember-i18n.index.</span>init
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ember-i18n.index.treeFor">
+            function <span class="apidocSignatureSpan">ember-i18n.index.</span>treeFor
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">ember-i18n.index.</span>name</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ember-i18n" id="apidoc.module.ember-i18n">module ember-i18n</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.ember-i18n.init" id="apidoc.element.ember-i18n.init">
+        function <span class="apidocSignatureSpan">ember-i18n.</span>init
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init() {
+  this._super.init &amp;&amp; this._super.init.apply(this, arguments);
+
+  var checker = new VersionChecker(this);
+  var dep = checker.forEmber();
+  this.hasEmberHelper = !dep.lt('1.13.0');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ember-i18n.treeFor" id="apidoc.element.ember-i18n.treeFor">
+        function <span class="apidocSignatureSpan">ember-i18n.</span>treeFor
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">treeFor(name) {
+  var result = this._super.treeFor.apply(this, arguments);
+
+  if (this.hasEmberHelper) {
+    result = exclude(result, [
+      'initializers/ember-i18n-legacy-helper.js',
+      'modules/ember-i18n/legacy/helper.js',
+      'modules/ember-i18n/legacy/initializer.js',
+      'modules/ember-i18n/legacy/stream.js'
+    ]);
+  } else {
+    result = exclude(result, [
+      'helpers/t.js',
+      'modules/ember-i18n/helper.js'
+    ]);
+  }
+
+  return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ember-i18n.index" id="apidoc.module.ember-i18n.index">module ember-i18n.index</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.ember-i18n.index.init" id="apidoc.element.ember-i18n.index.init">
+        function <span class="apidocSignatureSpan">ember-i18n.index.</span>init
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init() {
+  this._super.init &amp;&amp; this._super.init.apply(this, arguments);
+
+  var checker = new VersionChecker(this);
+  var dep = checker.forEmber();
+  this.hasEmberHelper = !dep.lt('1.13.0');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ember-i18n.index.treeFor" id="apidoc.element.ember-i18n.index.treeFor">
+        function <span class="apidocSignatureSpan">ember-i18n.index.</span>treeFor
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">treeFor(name) {
+  var result = this._super.treeFor.apply(this, arguments);
+
+  if (this.hasEmberHelper) {
+    result = exclude(result, [
+      'initializers/ember-i18n-legacy-helper.js',
+      'modules/ember-i18n/legacy/helper.js',
+      'modules/ember-i18n/legacy/initializer.js',
+      'modules/ember-i18n/legacy/stream.js'
+    ]);
+  } else {
+    result = exclude(result, [
+      'helpers/t.js',
+      'modules/ember-i18n/helper.js'
+    ]);
+  }
+
+  return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
